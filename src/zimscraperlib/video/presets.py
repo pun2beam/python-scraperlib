@@ -124,3 +124,40 @@ class VideoMp4High(Config):
         "-codec:a": "aac",  # audio codec
         "-crf": "20",  # constant quality, lower value gives better qual and larger size
     }
+
+class VideoMp4H264_nvenc(Config):
+    """Custom mp4 video h264_nvenc
+
+    20 constant quality"""
+
+    VERSION = 1
+
+    ext = "mp4"
+    mimetype = f"{preset_type}/mp4"
+
+    options: ClassVar[dict[str, str | bool | int | None]] = {
+        "-vf":"scale=960:-1", # change scale
+        "-codec:v": "h264_nvenc",  # video codec
+        "-codec:a": "aac",  # audio codec
+        "-b:v":"500k", # bitrate
+        "-crf": "20",  # constant quality, lower value gives better qual and larger size
+        "-preset": "slow"
+    }
+ class VideoMp4LowMotion(Config):
+    """Custom mp4 video h264_nvenc low motion
+
+    20 constant quality"""
+
+    VERSION = 1
+
+    ext = "mp4"
+    mimetype = f"{preset_type}/mp4"
+
+    options: ClassVar[dict[str, str | bool | int | None]] = {
+        "-vf":"scale=960:-1", # change scale
+        "-codec:v": "h264_nvenc",  # video codec
+        "-codec:a": "aac",  # audio codec
+        "-cq":"23", # constant quality, lower value gives better qual and larger size
+        "-g": "250",  # max key frame
+        "-preset": "slow"
+    }
