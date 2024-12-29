@@ -143,7 +143,7 @@ class VideoMp4H264_nvenc(Config):
         "-crf": "20",  # constant quality, lower value gives better qual and larger size
         "-preset": "slow"
     }
- class VideoMp4LowMotion(Config):
+class VideoMp4LowMotion(Config):
     """Custom mp4 video h264_nvenc low motion
 
     20 constant quality"""
